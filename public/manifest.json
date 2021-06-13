@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "FIT vs FEL",
+  "name": "Decide if FIT or FEL is best for you",
   "icons": [
     {
       "src": "favicon.ico",

@@ -1,38 +1,122 @@
 .App {
+  width: 100vw;
+  height: 100vh;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  overflow-x: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+@media screen and (max-width: 768px) {
+  .App {
+    flex-direction: column;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px 20px 20px;
+  }
 }
 
-@keyframes App-logo-spin {
+.wheel,
+.info {
+  flex: 1;
+}
+
+.fullscreen {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+}
+
+.fullscreen[is-shown=false] {
+  display: none;
+}
+
+.fullscreen[is-shown=true] {
+  display: block;
+  pointer-events: none;
+  animation: opacity 2s linear;
+}
+
+@keyframes opacity {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
+
   to {
-    transform: rotate(360deg);
+    opacity: 1;
   }
+}
+
+.wheel {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.wheel-outer {
+  position: relative;
+  display: flex;
+}
+
+.wheel-part-outer {
+  color: #fff;
+}
+
+.wheel-part {
+  position: absolute;
+  overflow: visible !important;
+}
+
+.firstHalf > div {
+  margin: -16px;
+}
+
+.secondHalf {
+  transform: translate(0px, 5px);
+}
+
+.secondHalf > div {
+  margin: -21px;
+}
+
+.wheel-part-outer span {
+  top: 0;
+  position: absolute;
+  font-size: 0.6em;
+  z-index: 9;
+}
+
+.wheel-component-outer {
+  display: flex;
+  justify-content: center;
+}
+
+.wheel-component {
+  width: fit-content;
+  overflow: hidden;
+  width: 500px; height: 500px;
+  transform: rotate(-90deg);
+}
+
+canvas {
+  transform: scale(1.6);
+}
+
+.picker {
+  display: flex;
+  justify-content: center;
+}
+
+.picker img {
+  transform: rotate(90deg);
+}
+
+.rotation-part {
+  transform: rotate(0deg);
+  transition: transform 10s cubic-bezier(0, 0.01, 0.16, 1);
 }
